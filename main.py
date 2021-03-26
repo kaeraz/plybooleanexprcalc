@@ -1,9 +1,9 @@
 import os
 from Source.Lexer import Lexer
 from Source.Parser import Parser
-from serial.tools.miniterm import raw_input
 import logging
 import subprocess
+
 
 # --------------------------------------------------------------------------
 # MAIN program part
@@ -18,7 +18,7 @@ def main_lexer():
     # Give LEXER some input]
     while True:
         try:
-            data = raw_input("<BoolCalc> ")
+            data = input("<BoolCalc> ")
         except EOFError:
             print("Program terminated on demand...")
             break;
@@ -45,7 +45,7 @@ def main_parser():
     # Give LEXER some input]
     while True:
         try:
-            data = raw_input("BoolCalc>>> ")
+            data = input("BoolCalc>>> ")
         except EOFError:
             print("Program terminated on demand...")
             break;
@@ -75,8 +75,8 @@ def main_parser():
                         returncode = os.system("start " + file_name + ".pdf")
                         if returncode != 0:
                             raise Exception
-                    except:
-                        print("Something went wrong while opening graph diagram...")
+                    except Exception as exc:
+                        print(f"Something went wrong while opening graph diagram: {exc}")
                     else:
                         p1.kill()
             except SyntaxError:
@@ -90,6 +90,7 @@ if __name__ == '__main__':
     
     logging.basicConfig(level=logging.INFO)
     
+    #main_lexer()
     main_parser()
     
     print('*** End of   [{0}]'.format(__file__))

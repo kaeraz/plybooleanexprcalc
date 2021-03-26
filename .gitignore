@@ -3,3 +3,7 @@ Source/parsetab.py
 Source/ast.txt
 Source/ast.txt.pdf
 
+/pyproject.toml
+/*.txt
+/*.pdf
+/Source/*.out
